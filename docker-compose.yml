@@ -1,2 +1,7 @@
 worker:
   build: .
+  ports:
+    - "44400:44400"
+    - "44444:44444/udp"
+  environment:
+    - LOAD_CONFIG=default
