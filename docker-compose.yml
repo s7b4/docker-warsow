@@ -3,5 +3,5 @@ worker:
   ports:
     - "44400:44400/udp"
     - "44444:44444"
-  environment:
-    - LOAD_CONFIG=default
+  volumes:
+    - ./custom.cfg:/etc/warsow/default.cfg:ro

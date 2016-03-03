@@ -9,6 +9,7 @@ if [ ! -f "$WS_HOME/wsw_server" ]; then
 fi
 
 # Configuration
+: ${LOAD_CONFIG:="default"}
 if [ ! -f "/etc/warsow/$LOAD_CONFIG.cfg" ]; then
 	echo >&2 "error: missing file: /etc/warsow/$LOAD_CONFIG.cfg"
 	exit 1
