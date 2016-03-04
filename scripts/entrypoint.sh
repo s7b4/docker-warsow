@@ -1,6 +1,11 @@
 #! /bin/bash
 set -e
 
+# Utils
+sed_escape() {
+	echo "\"$@\"" | sed 's/[\/&]/\\&/g'
+}
+
 # Installation de warsow
 if [ ! -f "$WS_HOME/wsw_server" ]; then
 	echo 'Download Warsow ...'
@@ -20,7 +25,7 @@ grep -e "^set .* \".*\"" /etc/warsow/$LOAD_CONFIG.cfg | while read config_line;
 do
 	CONFIG_KEY=$(echo $config_line | sed -r 's/set (\w+) "(.*)"/\1/');
 	CONFIG_VALUE=$(echo $config_line | sed -r 's/set (\w+) "(.*)"/\2/');
-	sed -i "s/\(set $CONFIG_KEY \).*/\1\"$CONFIG_VALUE\"/" $WS_HOME/basewsw/dedicated_autoexec.cfg
+	sed "s/\(set $CONFIG_KEY \).*/\1$(sed_escape "$CONFIG_VALUE")/" $WS_HOME/basewsw/dedicated_autoexec.cfg
 done;
 
 # Droits sur volume
