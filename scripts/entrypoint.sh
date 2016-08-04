@@ -9,7 +9,7 @@ sed_escape() {
 # Installation de warsow
 if [ ! -f "$WS_HOME/wsw_server" ]; then
 	echo 'Download Warsow ...'
-	: ${WARSOW_URL:="http://update.warsow.gg/mirror/warsow_201_unified.tar.gz"}
+	: ${WARSOW_URL:="http://update.warsow.gg/mirror/warsow_21_unified.tar.gz"}
 	curl -s "$WARSOW_URL" | tar xzf - --directory "$WS_HOME" --strip-components 1
 fi
 
