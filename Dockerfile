@@ -1,6 +1,7 @@
-FROM ubuntu:trusty
+FROM debian:jessie
 MAINTAINER s7b4 <baron.stephane@gmail.com>
 
+ENV GOSU_VERSION 1.9
 ENV WS_USER warsow
 ENV WS_HOME /home/$WS_USER
 
@@ -13,10 +14,10 @@ RUN apt-get update \
 		ca-certificates \
 		curl \
 	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/
+	&& rm -rf /var/lib/apt/lists/*
 
 # Gosu
-RUN curl -o /usr/local/sbin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" \
+RUN curl -o /usr/local/sbin/gosu -sSL "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
 	&& chmod +x /usr/local/sbin/gosu
 
 # Configs

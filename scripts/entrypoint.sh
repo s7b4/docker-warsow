@@ -7,10 +7,10 @@ sed_escape() {
 }
 
 # Installation de warsow
-if [ ! -f "$WS_HOME/wsw_server" ]; then
-	echo 'Download Warsow ...'
+if [ ! -f "$WS_HOME/wsw_server" -o ! -z "$DOWNLOAD_WARSOW" ]; then
 	: ${WARSOW_URL:="http://update.warsow.gg/mirror/warsow_21_unified.tar.gz"}
-	curl -s "$WARSOW_URL" | tar xzf - --directory "$WS_HOME" --strip-components 1
+	echo "Download Warsow from $WARSOW_URL ..."
+	curl -s "$WARSOW_URL" | tar xvzf - --directory="$WS_HOME" --transform='s#^./##' --strip-components=1
 fi
 
 # Configuration

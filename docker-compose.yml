@@ -5,3 +5,5 @@ worker:
     - "44444:44444"
   volumes:
     - ./custom.cfg:/etc/warsow/default.cfg:ro
+#  environment:
+#    DOWNLOAD_WARSOW: 'true'
