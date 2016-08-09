@@ -25,7 +25,7 @@ grep -e "^set .* \".*\"" /etc/warsow/$LOAD_CONFIG.cfg | while read config_line;
 do
 	CONFIG_KEY=$(echo $config_line | sed -r 's/set (\w+) "(.*)"/\1/');
 	CONFIG_VALUE=$(echo $config_line | sed -r 's/set (\w+) "(.*)"/\2/');
-	sed -i "s/\(set $CONFIG_KEY \).*/\1$(sed_escape "$CONFIG_VALUE")/" $WS_HOME/basewsw/dedicated_autoexec.cfg
+	sed -i "s/\(set $CONFIG_KEY \).*/\1$(sed_escape "$CONFIG_VALUE")/" $WS_ROOT/basewsw/dedicated_autoexec.cfg
 done;
 
 # Droits sur volume
@@ -35,4 +35,4 @@ chown -R "$WS_USER":"$WS_USER" "$WS_HOME"
 ARCH=$(uname -m | sed -e s/i.86/i386/ -e s/sun4u/sparc/ -e s/sparc64/sparc/ -e s/arm.*/arm/ -e s/sa110/arm/ -e s/alpha/axp/)
 
 # Démarrage
-exec gosu "$WS_USER" "$WS_HOME/wsw_server.$ARCH" +set fs_basepath "$WS_HOME" +set fs_usehomedir "0" "${@}"
+exec gosu "$WS_USER" "$WS_ROOT/wsw_server.$ARCH" +set fs_basepath "$WS_ROOT" +set fs_usehomedir "0" "${@}"
