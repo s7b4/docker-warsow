@@ -3,7 +3,9 @@ worker:
   ports:
     - "44400:44400/udp"
     - "44444:44444"
-  volumes:
-    - ./config/default.cfg:/etc/warsow/default.cfg:ro
+# Custom config
+#  volumes:
+#    - ./my-custom.cfg:/etc/warsow/default.cfg:ro
+# Force download
 #  environment:
 #    DOWNLOAD_WARSOW: 'true'
