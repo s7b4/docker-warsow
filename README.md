@@ -19,7 +19,7 @@ Créez un fichier qui contient les valeurs à surcharger dans la configuration s
 
 ### `my-custom.cfg`
 
-	set sv_hostname "My Dockerized warsow server"
+	set sv_hostname "My dockerized warsow server"
 
 	set sv_maxclients "8"
 	set sv_skilllevel "1"
