@@ -1,10 +1,11 @@
-FROM debian:jessie
-LABEL maintainer "s7b4 <baron.stephane@gmail.com>"
+FROM debian:stretch
+LABEL maintainer="s7b4 <baron.stephane@gmail.com>"
 
-ENV GOSU_VERSION 1.10
-ENV WS_USER warsow
-ENV WS_HOME /home/$WS_USER
-ENV WS_VERSION 21
+ENV GOSU_VERSION=1.10 \
+	WS_USER=warsow \
+	WS_VERSION=2.1.2
+
+ENV WS_HOME=/home/$WS_USER
 
 # set user/group IDs
 RUN groupadd -r "$WS_USER" --gid=999 && useradd -r -g "$WS_USER" --uid=999 "$WS_USER"
